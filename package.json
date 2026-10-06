@@ -1,0 +1,25 @@
+{
+  "name": "mini-invoice-approval-desk",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mini Invoice Approval Desk - a small take-home project for reviewing and approving vendor invoices",
+  "workspaces": [
+    "server",
+    "web"
+  ],
+  "scripts": {
+    "dev": "concurrently -n API,WEB -c blue,green \"npm run start:dev -w server\" \"npm run dev -w web\"",
+    "build": "npm run build -w server && npm run build -w web",
+    "lint": "npm run lint -w server && npm run lint -w web",
+    "test": "npm run test -w server",
+    "test:e2e": "npm run test:e2e -w server",
+    "db:migrate": "npm run migration:run -w server",
+    "db:seed": "npm run seed -w server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
